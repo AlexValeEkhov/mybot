@@ -162,22 +162,26 @@ def calc(update, context):
 
     calc_list = calc_text.split()
     try:
-        while len(calc_list) > 1:
+        while '/' in calc_list:
             for index, value in enumerate(calc_list):
                 if value =='/':
                     calc_list[index-1] = float(calc_list[index-1])/float(calc_list[index+1])
                     del calc_list[index]
                     del calc_list[index]
+        while '*' in calc_list:
+            for index, value in enumerate(calc_list):
                 if value =='*':
                     calc_list[index-1] = float(calc_list[index-1])*float(calc_list[index+1])
                     del calc_list[index]
                     del calc_list[index]
-
+        while '+' in calc_list:
             for index, value in enumerate(calc_list):
                 if value == '+':
                     calc_list[index-1] = float(calc_list[index-1])+float(calc_list[index+1])
                     del calc_list[index]
                     del calc_list[index]
+        while '-' in calc_list:
+            for index, value in enumerate(calc_list):
                 if value =='-':
                     calc_list[index-1] = float(calc_list[index-1])-float(calc_list[index+1])
                     del calc_list[index]
